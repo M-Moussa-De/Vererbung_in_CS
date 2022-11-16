@@ -42,11 +42,12 @@ Säugetier[] tiere = new Säugetier[len];
 
 int cnt = 0;
 
-for(int i = 0; i < len; i++)
+while(len > 0)
 {
     Console.WriteLine($"Welches Tier möchten Sie zum Array hinzufügen? [{Tierart.Hund}, {Tierart.Katze}]");
 
     string? input = Console.ReadLine();
+
     if (!string.IsNullOrEmpty(input))
     {
         input = input.Trim();
@@ -57,11 +58,13 @@ for(int i = 0; i < len; i++)
             case "Hund":
                 tiere[cnt] = new Hund();
                 cnt++;
+                len--;
                 break;
 
             case "Katze":
                 tiere[cnt] = new Katze();
                 cnt++;
+                len--;
                 break;
 
             default:
@@ -69,7 +72,7 @@ for(int i = 0; i < len; i++)
                 break;
         }
 
-        if (cnt > len)
+        if (len > 0)
         {
             Console.WriteLine($"Ihr Array hat noch {len} frei Platz/Plätze");
         }
@@ -77,7 +80,7 @@ for(int i = 0; i < len; i++)
     }
     else
     {
-        Console.WriteLine($"Welches Tier möchten Sie zum Array hinzufügen? [{Tierart.Hund}, {Tierart.Katze}]");
+        Console.WriteLine($"Sorry, wir haben keine gültige Antwort bekommen. Versuchen Sie erneut");
     }
 }
 
